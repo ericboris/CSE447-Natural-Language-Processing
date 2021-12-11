@@ -1,0 +1,15 @@
+{\bf Problem 3}
+
+Given a CNF PCFG, a sentence x of length n, and an unlabeled phrase-structure tree, describe a linear time dynamic programming algorithm that produces the most probable labeled tree consistent with the input.
+We assume that the phrase-structure tree is ordered, i.e. that children spans occur before parent spans.
+We discover the tree labels by using a dynamic programming approach.
+And we do this by iterating over the phrase-structure tree, starting with children spans.
+We know that all single-spans, i.e. $<i_k, j_k>$ s.t. $k=k$, are the words of the sentence.
+We assign to each single-span cell in the dynamic programming table the most probable label of that word using the PCFG and a backpointer to that word.
+Having visited every single-span entry, we encounter the multiple-span entries, $<i_k, j_l>$ s.t. $k \neq l$ and s.t. $1 \leq k$, $k < l$, and $l\leq n$.
+Each cell at this level is a possible parent to two children since the tree is CNF.
+We consider the possible labels to this cell by considering that cell's possible children and choose that with the highest probability as given by the PCFG or assign no label if one is not found in the PCFG.
+We assign to each cell the most probable label and a backpointer to the cells from which it was generated.
+Upon reaching the last entry in the phrase-structure tree, we've reached the root of the tree. 
+We now follow the backpointers along the path through the dynamic programming table to reconstruct the most probable labeling of the tree.
+Because we iterate over the phrase-structure tree once and only consider a limited number of children for any cell, the algorithm is upper bounded and runs in linear time.

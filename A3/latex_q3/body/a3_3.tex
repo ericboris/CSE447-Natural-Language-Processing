@@ -1,0 +1,24 @@
+\begin{quote}
+    {\bf 3.3-3.5 Results:} Training a text sentiment classifier using a GRU-based RNN model. 
+    The model uses an UNK threshold of 5, batch size of 128, 8 epochs, 256 hidden dimensions, and 2 hidden layers. 
+    Results from the model without fine tuning:
+    \begin{center}
+	\begin{tabular}{ c | c | c | c }
+	    Dataset & Accuracy (\%) & F1 Score & Runtime (secs) \\
+	    \hline
+	    Training & 0.829 & 0.8288 & 298 \\
+	    Test & 0.8186 & 0.8174 & 11
+	\end{tabular}
+    \end{center}
+
+    Results from the model with fine tuning:
+    \begin{center}
+	\begin{tabular}{ c | c | c | c }
+	    Dataset & Accuracy (\%) & F1 Score & Runtime (secs) \\
+	    \hline
+	    Training & 0.823 & 0.8929 & 242 \\
+	    Test & 0.8935 & 0.8935 & 11
+	\end{tabular}
+    \end{center}
+
+\end{quote}

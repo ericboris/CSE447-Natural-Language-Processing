@@ -1,0 +1,43 @@
+\begin{quote}
+    Perplexity and Percentage of Tokens removed by n-Gram models on Training, Validation, and Testing datasets with an unk threshold of 5.
+\end{quote}
+
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c|c|c| } 
+	\hline
+	 & \multicolumn{2}{c|}{Training} & \multicolumn{2}{c|}{Validation} & \multicolumn{2}{c|}{Testing} \\ 
+	\hline
+	Model & Perplexity & \% Removed & Perplexity & \% Removed & Perplexity & \% Removed \\
+	\hline
+	Unigram & 803.49 & 0.00 & 754.30 & 0.00 & 756.69 & 0.00 \\ 
+	\hline
+	Bigram & 75.63 & 0.00 & 64.23 & 18.00 & 60.57 & 16.84 \\ 
+	\hline
+	Trigram & 7.95 & 0.00 & 11.61 & 53.74 & 10.67 & 52.08 \\ 
+	\hline
+    \end{tabular}
+\end{center}
+
+\begin{quote}
+    Perplexity percentage difference of training using an unk threshold of 3 compared to using an unk threshold of 5. Positive values indicate an increase in perplexity from unk threshold of 3 to unk threshold of 5 and negative values indicate a decrease in perplexity from an unk threshold of 3 to an unk threshold of 5.
+\end{quote}
+
+\begin{center}
+     \begin{tabular}{ |c|c|c|c|c|c|c| } 
+	\hline
+	 & \multicolumn{2}{c|}{Training} & \multicolumn{2}{c|}{Validation} & \multicolumn{2}{c|}{Testing} \\ 
+	\hline
+	Model & Perplexity & \% Removed & Perplexity & \% Removed & Perplexity & \% Removed \\
+	\hline
+	Unigram & -19.44 & 0.00 & -16.76 & 0.00 & -16.94 & 0.00 \\ 
+	\hline
+	Bigram & -1.86 & 0.00 & -2.06 & -11.02 & -1.52 & -11.16 \\ 
+	\hline
+	Trigram & 8.52 & 0.00 & 3.24 & -4.71 & 3.63 & -4.87 \\ 
+	\hline
+    \end{tabular}
+\end{center}
+
+\begin{quote}
+Compared to using an unk threshold of 3, {\bf increasing the unk threshold to 5} has the effect of {\bf decreasing} perplexity on {\bf unigram and bigram models} and of {\bf increasing} perplexity on the {\bf trigram model} and of {\bf decreasing} the percentage of words removed across all models. This suggests that there exists a balance to strike between n and the size of unk threshold to minimize perplexity and the percentage of words removed.  
+\end{quote}

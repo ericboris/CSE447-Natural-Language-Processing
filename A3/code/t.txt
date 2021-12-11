@@ -1,0 +1,13 @@
+
+good = x1
+not = x2
+bad = x3
+
+
+1/m w(x1 + x1) > 1/m w(x2 + x1)
+w(x1 + x1) > w(x2 + x1)
+x1 + x1 > x2 + x1
+x1 > x2
+
+x1 + x3 < x2 + x3
+x1 < x2

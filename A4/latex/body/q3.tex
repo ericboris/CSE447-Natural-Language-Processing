@@ -1,0 +1,11 @@
+{\bf Problem 3}
+
+\begin{quote}
+    1. 
+	$$ \heartsuit_i (y', y) = \max_{y'' \in \mathcal{L}} s(\textbf{x}, i-1, y'', y', y') + \heartsuit_{i-1} (y'', y') $$
+	$$ b_i (y', y) = \arg\!\max_{y'' \in \mathcal{L}} s(\textbf{x}, i-1, y'', y', y') + b_{i-1} (y'', y') $$
+    2.\\ 
+    
+In general, the space and time complexity of Viterbi grows exponentially. Space complexity grows to $\mathcal{O}(\ell * | L |^2)$ because there are exponentially many more label history combinations to store. In the case of time complexity, each label must now be examined twice. So, since we had $\mathcal{O} (\ell * | L |^2)$ in the bigram model, we grow exponentially to $\mathcal{O} (\ell * | L |^4)$ for the trigram model. 
+
+\end{quote}

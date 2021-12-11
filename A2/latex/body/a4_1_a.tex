@@ -1,0 +1,23 @@
+\begin{quote}
+    \textbf{n-Gram model}
+\end{quote}
+
+\begin{itemize}
+    \item Let a \textbf{dataset} be a nested list of lists of string tokens.
+    \item Let the \textbf{unk threshold} be the minimum number of times that a token $t_i$ appears in a training dataset without being converted into the special UNK token during testing. I.e. if the unk threshold is 3, then any tokens appearing less than 3 times in the training dataset will be converted into the UNK token.
+    \item Let the emission \textbf{probability} $P(t_i \vert t_{i-(n-1)})$ of token $t_i$ for $n\geq1$ be computed $\frac{C\left(t_i \vert t_{i-(n-1)}\right)}{\lvert V \rvert}$ where $\lvert V \rvert$ is the size of the vocabulary of the dataset and $C\left(t_i \vert t_{i-(n-1)}\right)$ is the count of times $t_i$ appears preceeded by $t_{i-(n-1)}$ tokens.
+    \item Let a \textbf{unigram} model be a mapping of token $t_i$ to token emission probability $P(t_i)$. 
+    \item Let an \textbf{ngram} model be a mapping of token $t_i$ to token emission probability $P(t_i \vert t_{i-(n-1)})$ given $n-1$ preceeding tokens $t_{i-(n-1)}$. We then specify that a \textbf{bigram} model is an ngram model mapping $t_i$ to $P(t_i \vert t_{i-1})$ and that at \textbf{trigram} model is an ngram model mapping $t_i$ to $P(t_i \vert t_{i-2}, \, t_{i-1})$. Note, that for implementation reasons ngram specifically refers to n$>$1 ngram models in code, however, for convenience, the term ngram is used in this write up to refer to ngram models where n$\geq$1.
+    \item Combining the above yields the following pipeline for creating an ngram model. Load a training dataset. For each line of tokens in the dataset, unk any applicable tokens. For each token in the line compute it's probability and store both token and probability in the model.
+\end{itemize} 
+
+\begin{quote}
+    \textbf{Perplexity}
+\end{quote}
+
+\begin{itemize}
+    \item Let the \textbf{cross entropy} be $H(T) = - \sum_i^N \frac{1}{N} log_2 P \left( t_i \vert t_{i-(n-1)}\right)$ where $T$ is the dataset of tokens, $N$ is the number of tokens in the dataset, and $P \left( t_i \vert t_{i-(n-1)}\right)$ is the probability gotten from a trained ngram model of token $t_i$ being preceeded by tokens $t_{i-(n-1)}$ for $n\geq1$. Note that in some cases $P \left( t_i \vert t_{i-(n-1)}\right) = 0$ (ex: a token is observed in the test dataset that had not been observed in the training dataset). In these cases the token is not included in the calculation of the cross entropy to prevent incorrectly skewing the perplexity. Instead, in code, the cross entropy function also returns a percentage of such tokens that were removed from the calcuation. 
+    \item Let the \textbf{perplexity} be $P(T) = 2^{H(T)}$. If no words in the test dataset $T$ appear in the trained ngram model and $H(T) = 0$ then rather than report a false perplexity, $P(T) = \infty$.
+    \item Combining the above yields the following for computing the perplexity of an ngram model on dataset $T$. For each line in the dataset, replace appropriate tokens with the UNK token. For each token in the line compute it's perplexity $P(T) = 2^{H(T)} = 2^{- \sum_i^N \frac{1}{N} log_2 P \left( t_i \vert t_{i-(n-1)}\right)}$ and return the total perplexity of the dataset.
+\end{itemize}
+

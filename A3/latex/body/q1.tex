@@ -1,0 +1,27 @@
+{\bf 1.} 
+A simple way to compute a vector representation of a sequence of words is to add up the vector representa- tions of the words in the sequence. Consider a sentiment analysis model in which the predicted sentiment is given by:
+
+\begin{equation}
+    \textrm{score}(w_1, ..., w_m) = \mathbb{\theta} \cdot \sum_{i=1}^{m} \mathbf{x}_{w_i}
+\end{equation}
+
+where $w_i$ is the $i$th word and $\mathbf{x}_{w_i}$ is the embedding for the $i$th word; the input is of length $m$ (in word tokens).
+$\mathbb{\theta}$ are parameters. 
+Prove that, in such a model, the following two inequalities cannot both hold:
+
+\begin{align}
+    \textrm{score(good)} &> \textrm{score(not good)} \\
+    \textrm{score(bad)} &< \textrm{score(not bad)}
+\end{align}
+
+\input{body/a1_a.tex}
+
+Next, consider a slightly different model:
+
+\begin{equation}
+    \textrm{score}(w_1, ..., w_m) = \frac{1}{m} \left( \mathbb{\theta} \cdot \sum_{i=1}^{m} \mathbf{x}_{w_i} \right)
+\end{equation}
+
+Construct an example of a pair of inequalities similar to (2–3) that cannot both hold.
+
+\input{body/a1_b.tex}

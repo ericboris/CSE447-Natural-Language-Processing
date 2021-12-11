@@ -1,0 +1,29 @@
+\begin{quote}
+{\bf Answer}: Prove using sentiment analysis model (5), the word embedding vectors $\textbf{x}_{\textrm{good}} = [-1, 1]^T, \, \textbf{x}_{\textrm{not}} = [-1, -1]^T, \textrm{and}\, \textbf{x}_{\textrm{bad}} = [1, -1]^T$  for the words ``good'', ``not'', and ``bad'', respectively, and weight vector $\mathbb{\theta} = [-1, 1]$ that inequalities (2) and (3) hold. \\
+
+{\bf Claim 1}: $\textrm{score(good)} > \textrm{score(not good)}$
+    \begin{align*}
+	\textrm{score(good)} &> \textrm{score(not good)} \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( \sum_{i=1}^{m} \textbf{x}_{w_i} \right) &> \mathbb{\theta} \cdot \textrm{ReLU} \left( \sum_{i=1}^{m} \textbf{x}_{w_i} \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( \textbf{x}_{\textrm{good}} \right) &> \mathbb{\theta} \cdot \textrm{ReLU} \left( \textbf{x}_{\textrm{not}} + \textbf{x}_{\textrm{good}} \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( [-1, \, 1]^T \right) &> \mathbb{\theta} \cdot \textrm{ReLU} \left( [-1, \, -1]^T + [-1,\, 1]^T \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( [-1, \, 1]^T \right) &> \mathbb{\theta} \cdot \textrm{ReLU} \left( [-2, \, 0]^T \right) \\
+	\mathbb{\theta} \cdot [0, \, 1]^T &> \mathbb{\theta} \cdot [0, \, 0]^T  \\
+	[-1, \, 1] \cdot [0, \, 1]^T &> [-1, \, 1] \cdot [0, \, 0]^T \\
+	1 &> 0
+    \end{align*}
+
+{\bf Claim 2}: $\textrm{score(bad)} < \textrm{score(not bad)}$
+    \begin{align*}
+	\textrm{score(bad)} &< \textrm{score(not bad)} \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( \sum_{i=1}^{m} \textbf{x}_{w_i} \right) &< \mathbb{\theta} \cdot \textrm{ReLU} \left( \sum_{i=1}^{m} \textbf{x}_{w_i} \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( \textbf{x}_{\textrm{bad}} \right) &< \mathbb{\theta} \cdot \textrm{ReLU} \left( \textbf{x}_{\textrm{not}} + \textbf{x}_{\textrm{bad}} \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( [1, \, -1]^T \right) &< \mathbb{\theta} \cdot \textrm{ReLU} \left( [-1, \, -1]^T + [1,\, -1]^T \right) \\
+	\mathbb{\theta} \cdot \textrm{ReLU} \left( [1, \, -1]^T \right) &< \mathbb{\theta} \cdot \textrm{ReLU} \left( [0, \, -2]^T \right) \\
+	\mathbb{\theta} \cdot [1, \, 0]^T &< \mathbb{\theta} \cdot [0, \, 0]^T  \\
+	[-1, \, 1] \cdot [1, \, 0]^T &< [-1, \, 1] \cdot [0, \, 0]^T \\
+	-1 &< 0
+    \end{align*}
+
+Thus, because {\bf Claim 1} and {\bf Claim 2} are true, the inequalities (2) and (3) hold when using sentiment analysis model (5) and the described word embedding vectors and weight vector.
+\end{quote}

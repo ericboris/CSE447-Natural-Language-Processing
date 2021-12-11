@@ -1,0 +1,14 @@
+\textbf{4.2}. Implement linear interpolation smoothing between unigram, bigram, and trigram models: 
+    $$\theta_{x_j \vert x_{j-2}, \, x_{j-1}}' = \lambda_1 \theta_{x_j} + \lambda_2 \theta_{x_j \vert x_{j-1}} + \lambda_3 \theta_{x_j \vert x_{j-2}, \, x_{j-1}}$$ 
+Where $\theta'$ represents the smoothed parameters and the hyperparameters $\lambda_1$, $\lambda_2$, and $\lambda_3$ are weights on the unigram, bigram, and trigram language models, respectively. $\lambda_1 + \lambda_2 + \lambda_3 = 1$. Provide graphs, tables, charts, or other summary evidence to support any claims you make.
+
+\begin{enumerate}
+    \item Describe your models and experimental procedure.
+	\input{body/a4_2_a.tex}
+    \item Report perplexity scores on training, validation, test sets for various values of $\lambda_1$, $\lambda_2$, and $\lambda_3$. Report no more than 5 different sets of $\lambda$’s. In addition to this, report the training and validation perplexity for the values $\lambda_1 = 0.1$, $\lambda_2 = 0.3$, and $\lambda_3 = 0.6$
+	\input{body/a4_2_b.tex}
+    \item If you use half of the training data, would it increase or decrease the perplexity on previously unseen data? Why? Provide empirical experimental evidence if necessary.
+	\input{body/a4_2_c.tex}
+    \item If you convert all tokens that appeared less than 5 times to $<$UNK$>$, would it increase or decrease the perplexity on the previously unseen data compared to an approach that converts only a fraction of words that appeared just once to $<$UNK$>$? Why? Provide empirical experimental evidence if necessary.
+	\input{body/a4_2_d.tex}
+\end{enumerate}

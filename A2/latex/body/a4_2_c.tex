@@ -1,0 +1,44 @@
+\begin{quote}
+    Perplexity and Percentage of Tokens removed by n-Gram models after training on half the training dataset on Training, Validation, and Testing datasets with an unk threshold of 3.
+\end{quote}
+
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c|c|c| } 
+	\hline
+	 & \multicolumn{2}{c|}{Training} & \multicolumn{2}{c|}{Validation} & \multicolumn{2}{c|}{Testing} \\ 
+	\hline
+	Model & Perplexity & \% Removed & Perplexity & \% Removed & Perplexity & \% Removed \\
+	\hline
+	Unigram & 816.49 & 0.00 & 723.12 & 0.00 & 725.55 & 0.00 \\
+	\hline
+	Bigram & 63.08 & 0.00 & 52.09 & 22.07 & 46.24 & 19.71 \\ 
+	\hline
+	Trigram & 6.11 & 0.00 & 9.56 & 58.52 & 8.20 & 55.84 \\
+	\hline
+    \end{tabular}
+\end{center}
+
+\begin{quote}
+    Perplexity and Percentage Removed percentage differences from training model on a half training dataset from training model on the entire training dataset. Positive values indicate an increase in perplexity from entire training dataset to half training dataset and negative values indicate a decrease in perplexity from entire training dataset to half training dataset.
+\end{quote}
+
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c|c|c| } 
+	\hline
+	 & \multicolumn{2}{c|}{Training} & \multicolumn{2}{c|}{Validation} & \multicolumn{2}{c|}{Testing} \\ 
+	\hline
+	Model & Perplexity & \% Removed & Perplexity & \% Removed & Perplexity & \% Removed \\
+	\hline
+	Unigram & -16.39 & 0.00 & -12.80 & 0.00 & -19.07 & 0.00 \\
+	\hline
+	Bigram & -18.15 & 0.00 & -20.56 & 9.75 & -24.81 & 4.67 \\ 
+	\hline
+	Trigram & -16.30 & 0.00 & -14.95 & 3.89 & -20.31 & 2.12 \\ 
+	\hline
+    \end{tabular}
+\end{center}
+
+
+\begin{quote}
+    Compared to training the same model son the entire training dataset, {\bf reducing the size of the training dataset} has the effect of {\bf reducing the perplexity} across all models and datasets. However this also has the effect of {\bf increasing the percentage of words removed} since fewer words had been seen during training. Pushed to extremes, we expect that a training dataset of size 0 would therefore remove 100\% of words. In conclusion, a balance should be sought between dataset size, percentage of words removed, and perplexity.
+\end{quote}

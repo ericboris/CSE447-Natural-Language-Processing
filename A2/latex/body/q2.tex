@@ -1,0 +1,23 @@
+\textbf{2}. Design a feedforward network to compute this function, which is closely related to XOR:
+\begin{equation*}
+    f(x_1, x_2) = \left\{
+	\begin{array}{ll}
+	    -1 &\text{if } \, x_1 = 1 \land x_2 = 1 \\
+	    1 &\text{if } \, x_1 = 1 \land x_2 = 0 \\	
+	    1 &\text{if } \, x_1 = 0 \land x_2 = 1 \\
+	    -1 &\text{if } \, x_1 = 0 \land x_2 = 0
+	\end{array}
+    \right.
+\end{equation*}
+Your network should have a single output node that uses the “sign” activation function,
+\begin{equation*}
+   \text{sign}(x) = \left\{
+	\begin{array}{ll}
+	    1 &\text{if } \, x > 0 \\
+	    -1 &\text{if } \, x \leq 0
+	\end{array}
+    \right. 
+\end{equation*}
+Use a single hidden layer, with ReLU activation functions. Describe all weights and offsets.
+
+    

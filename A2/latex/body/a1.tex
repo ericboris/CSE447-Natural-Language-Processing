@@ -1,0 +1,20 @@
+\begin{quote}
+    \begin{itemize}
+	\item Let $f(V, M)$ be the expectation of the fraction of all possible bigrams that have zero count in terms of the vocabulary V and corpus size M.
+	\item Let $C(i, j)$ be the count of the number of times the token i preceedes the token j. 
+	\item Let $\mathbf{1}(\cdot)$ be the indicator function. 
+	\item Find $f(V, M)$.
+    \end{itemize}
+    \begin{align*}
+	f(V, M) &= \frac{1}{\lvert V^2 \rvert} \mathbb{E} \left[ \sum_{i, j}^V \mathbf{1} \left(C(i, j) = 0 \right) \right] \tag*{There are $\lvert V^2 \rvert$ permutations of $V$} \\
+    	    &= \frac{1}{\lvert V^2 \rvert} \left( \lvert V^2 \rvert P\left(C(i, j) = 0\right) \right) \tag*{$\mathbb{E}\left[ \sum_{i,\,j}^V \right] = V^2$ for i.i.d tokens i, j}\\
+	    &= P \left( C(i, j) = 0 \right) \tag*{$\lvert V^2 \rvert$ cancels} \\
+	    &= 1 - P \left(C(i, j) \neq 0 \right) \tag*{Complement of $P \left( C(i, j) = 0 \right)$} \\
+	    &= 1 - \left( M * \frac{1}{\lvert V \rvert} * \frac{1}{\lvert V \rvert - 1} \right) \tag*{There are M tokens} \\
+	    &= 1 - \left( (M - 1) * \frac{1}{\lvert V \rvert} * \frac{1}{\lvert V \rvert - 1} \right) \tag*{There are M-1 bigrams} \\
+	    &= 1 - \left( (M - 1) * \frac{1}{\lvert V \rvert} * \frac{1}{\lvert V \rvert } \right) \tag*{$\frac{1}{\lvert V \rvert} \approx \frac{1}{\lvert V \rvert - 1}$} \\
+	    &= 1 - \left( (M - 1) * \frac{1}{\lvert V^2 \rvert}  \right) \tag*{Simplify} \\
+	    &= 1 - \frac{M - 1}{\lvert V^2 \rvert}
+    \end{align*}
+    $$ \boxed{ f(V, M) = 1 - \frac{M - 1}{\lvert V^2 \rvert} } $$
+\end{quote}

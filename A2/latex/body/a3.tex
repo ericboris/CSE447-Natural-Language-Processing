@@ -1,0 +1,18 @@
+\begin{itemize}
+    \item Let $\ell \left( y, \, \tilde{y} \right)$ be an arbitrary loss function. 
+    \item Let FFN be the feedforward network from problem 2.
+    \item Suppose all weights and offsets in FFN are initialized to zero.
+    \item With $\eta$ as the learning rate, let the following represent the weight and offset updates via gradient descent.
+	\begin{align*}
+	    \mathbf{\Theta}^{\left( x \rightarrow z \right)} &\leftarrow \mathbf{\Theta}^{\left( x \rightarrow z \right)} - \eta \nabla_{\mathbf{\Theta}^{\left( x \rightarrow z \right)}} \ell \\
+	    \mathbf{\Theta}^{\left( z \rightarrow y \right)} &\leftarrow \mathbf{\Theta}^{\left( z \rightarrow y \right)} - \eta \nabla_{\mathbf{\Theta}^{\left( z \rightarrow y \right)}} \ell \\
+	    \mathbf{b}_1 &\leftarrow \mathbf{b}_1 - \eta \nabla_{\mathbf{b}_1} \ell \\
+	    \mathbf{b}_2 &\leftarrow \mathbf{b}_2 - \eta \nabla_{\mathbf{b}_2} \ell \\
+	\end{align*}
+    \item Consider each of the above updates.
+	\begin{itemize}
+	    \item $\mathbf{\Theta}^{\left( x \rightarrow z \right)} = \mathbf{\Theta}^{\left( x \rightarrow z \right)}$ because $a=0$ so $\text{ReLU}(0) = 0$ so $\text{ReLU}'(0) = 0$.
+	    \item $\mathbf{\Theta}^{\left( z \rightarrow y \right)} = \mathbf{\Theta}^{\left( z \rightarrow y \right)}$ because $\text{sign}'(a)=0$ if $a>0$ and if $a\leq0$.
+	\end{itemize}
+    \item Thus, the combination of zero weights and offsets, ReLU(a), and sign(a), keeps the gradients at zero, and thus the weights and offsets can't be learned. 
+\end{itemize}

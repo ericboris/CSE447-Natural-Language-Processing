@@ -1,0 +1,50 @@
+{\bf Problem 4}
+
+\begin{enumerate}[label={\arabic*.}]
+    \item
+	\begin{center}
+	    \begin{tabular}{ c|l|r|l }  
+		\multicolumn{4}{c}{Interpreting ``duck'' as a noun} \\   
+		& Stack & Buffer & Action \\
+		\hline
+		0 & & He $|$ saw $|$ her $|$ duck $|$ . & NT(S) \\
+		1 & (S & He $|$ saw $|$ her $|$ duck $|$ . & NT(NP) \\
+		2 & (S $|$ (NP & He $|$ saw $|$ her $|$ duck $|$ . & SHIFT \\
+		3 & (S $|$ (NP $|$ He & saw $|$ her $|$ duck $|$ . & REDUCE \\
+		4 & (S $|$ (NP He) & saw $|$ her $|$ duck $|$ . & NT(VP) \\
+		5 & (S $|$ (NP He) $|$ (VP & saw $|$ her $|$ duck $|$ . & SHIFT \\
+		6 & (S $|$ (NP He) $|$ (VP $|$ saw & her $|$ duck $|$ . & NT(NP) \\
+		7 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (NP & her $|$ duck $|$ . & SHIFT \\
+		8 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (NP $|$ her & duck $|$ . & SHIFT \\
+		9 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (NP $|$ her $|$ duck & . & REDUCE \\
+		10 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (NP her duck) & . & REDUCE \\
+		11 & (S $|$ (NP He) $|$ (VP saw (NP her duck)) & . & SHIFT \\
+		12 & (S $|$ (NP He) $|$ (VP saw (NP her duck)) $|$ . & & REDUCE \\
+		13 & (S (NP He) (VP saw (NP her duck)). ) & & \\
+		\hline
+	    \end{tabular}
+	    \begin{tabular}{ c|l|r|l }  
+		\multicolumn{4}{c}{Interpreting ``duck'' as a verb} \\   
+		& Stack & Buffer & Action \\
+		\hline
+		0 & & He $|$ saw $|$ her $|$ duck $|$ . & NT(S) \\
+		1 & (S & He $|$ saw $|$ her $|$ duck $|$ . & NT(NP) \\
+		2 & (S $|$ (NP & He $|$ saw $|$ her $|$ duck $|$ . & SHIFT \\
+		3 & (S $|$ (NP $|$ He & saw $|$ her $|$ duck $|$ . & REDUCE \\
+		4 & (S $|$ (NP He) & saw $|$ her $|$ duck $|$ . & NT(VP) \\
+		5 & (S $|$ (NP He) $|$ (VP & saw $|$ her $|$ duck $|$ . & SHIFT \\
+		6 & (S $|$ (NP He) $|$ (VP $|$ saw & her $|$ duck $|$ . & NT(VP) \\
+		7 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (VP & her $|$ duck $|$ . & SHIFT \\
+		8 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (VP $|$ her & duck $|$ . & SHIFT \\
+		9 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (VP $|$ her $|$ duck & . & REDUCE \\
+		10 & (S $|$ (NP He) $|$ (VP $|$ saw $|$ (VP her duck) & . & REDUCE \\
+		11 & (S $|$ (NP He) $|$ (VP saw (VP her duck)) & . & SHIFT \\
+		12 & (S $|$ (NP He) $|$ (VP saw (VP her duck)) $|$ . & & REDUCE \\
+		13 & (S (NP He) (VP saw (VP her duck)). ) & & \\
+		\hline
+	    \end{tabular}
+	\end{center}
+    \item A feature we could use to inform the next action could be to see if the last action was a REDUCE. If it was, we likely want to perform a NT, with some smaller probability of performing another REDUCE, and a very small to zero probablity of performing a SHIFT. Based on the tables above, as well as Figure 1 on the spec, this feature will give us increased performance in classifying the next action.
+    \item We can use a variant of Dijkstra's algorithm to maintain a frontier of possible actions and progress by choosing the next best action at each step. We represent the search space as a graph with nodes representing actions and edge weights between nodes representing probabilities. We follow the hightest probability path. Invalid paths are assigned negative infinite weight and infinite loops are prevented by limiting recursion depth to the number of tokens remaining in the buffer. The highest probability tree then is that wih the best path through the search space as found by Dijkstra's. 
+    \item Our first constraint is to prevent left recursion, i.e. no $X \rightarrow X \, ...\, $. Next, we restrict cycles with the constraints that 1) if $X \rightarrow Y$ and $X \rightarrow Z$ then $\textrm{First}(Y) \cap \textrm{First}(Z) = \emptyset$ and 2) if $X \rightarrow Y$ and $X \rightarrow Z$ and $\textrm{First}(Z)$ contains $\epsilon$ then $\textrm{First}(Y) \cap \textrm{Follow}(Z) = \emptyset$. Thus, by preventing left recursion and cycles, we prevent infinite loops.
+\end{enumerate}

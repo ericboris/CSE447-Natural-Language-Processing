@@ -1,0 +1,15 @@
+\begin{quote}
+    Define and construct the above described feedforward network as follows.
+    \begin{itemize}
+	\item Let $\textbf{x} = \left[ x_1, \, x_2 \right]^{\text{T}}$ be the input vector such that $x_1$ and $x_2 \in \{ 0, \, 1 \}$ are binary scalars.
+	\item Let $\mathbf{\Theta}^{\left( x \rightarrow z \right)} \in \mathbb{R}^{2 \times 2}$ be the hidden layer matrix where $\mathbf{\Theta}^{\left( x \rightarrow z \right)} = \left[ \mathbf{\theta}_1^{\left( x \rightarrow z \right)} , \, \mathbf{\theta}_2^{\left( x \rightarrow z \right)} \right]^{\text{T}}$ such that the vectors $\mathbf{\theta}_1^{\left( x \rightarrow z \right)}$ and $\mathbf{\theta}_2^{\left( x \rightarrow z \right)}$ represent the two nodes in the hidden layer.
+	\item Let $\mathbf{b}_1 \in \mathbb{R}^2$ be the hidden layer offset parameter.
+	\item Let $\text{ReLU}\left( a \right) = \max(0, \, a)$, the standard ReLU function.  
+	\item Let $\textbf{z} = \text{ReLU} \left( \mathbf{\Theta}^{\left( x \rightarrow z \right)} \textbf{x} + \mathbf{b}_1 \right)$ be the the hidden layer. 
+	\item Let $\mathbf{\Theta}^{ \left( z \rightarrow y \right) } \in \mathbb{R}^{1 \times 2}$ be the output layer matrix where $\mathbf{\Theta}^{\left( z \rightarrow y \right)} = \left[ \mathbf{\theta}_1^{\left( z \rightarrow y \right)} \right]^{\text{T}}$ such that the vector $\mathbf{\theta}_1^{\left( z \rightarrow y \right)}$ represents the node in the output layer.
+	\item Let $\mathbf{b}_2 \in \mathbb{R}^1$ be the output layer offset parameter.
+	\item Let $\text{sign}(a)$ be the sign function as described above.
+	\item Let $\hat{y} = \text{sign} \left( \mathbf{\Theta}^{ \left( z \rightarrow y \right) } \textbf{z} + \mathbf{b}_2 \right)$ be the predicted output.
+	\item Combining the above yields the feedforward network that predicts $\hat{y}$ as $$ \boxed{ \hat{y} = \text{sign} \left( \mathbf{\Theta}^{ \left( z \rightarrow y \right) } \left( \text{ReLU} \left( \mathbf{\Theta}^{\left( x \rightarrow z \right)} \textbf{x} + \mathbf{b}_1 \right) \right) + \mathbf{b}_2 \right) }$$
+    \end{itemize}
+\end{quote}

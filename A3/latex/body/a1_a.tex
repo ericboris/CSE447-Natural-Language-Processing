@@ -1,0 +1,24 @@
+\begin{quote}
+{\bf Answer}: Prove by contradiction that inequalites (2) and (3) cannot both be true when using sentiment analysis model (1). \\
+
+    Assume that both inequalities (2) and (3) are true using sentiment analysis model (1).
+    Let $\textbf{x}_{w_1}$, $\textbf{x}_{w_2}$, $\textbf{x}_{w_3}$ be arbitrary word embedding vectors for the words ``good'', ``not'', and ``bad'', respectively and let $\mathbf{\theta}$ be an arbitrary weight vector. \\
+
+    {\bf Claim 1}: $0 > \mathbf{\theta} \cdot \textbf{x}_{w_2}$
+    \begin{align*}
+	\textrm{score(good)} &> \textrm{score(not good)} \\
+	\mathbf{\theta} \cdot \sum_{i=1}^{m} \textbf{x}_{w_i} &> \mathbf{\theta} \cdot \sum_{i=1}^{m} \textbf{x}_{w_i} \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} &> \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_1} \right) \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} &> \mathbf{\theta} \cdot \textbf{x}_{w_2} + \mathbf{\theta} \cdot \textbf{x}_{w_1} \\
+	0 &> \mathbf{\theta} \cdot \textbf{x}_{w_2}
+     \end{align*}
+    {\bf Claim 2}: $0 < \mathbf{\theta} \cdot \textbf{x}_{w_2}$
+    \begin{align*}
+	\textrm{score(bad)} &< \textrm{score(not bad)} \\
+	\mathbf{\theta} \cdot \sum_{i=1}^{m} \textbf{x}_{w_i} &< \mathbf{\theta} \cdot \sum_{i=1}^{m} \textbf{x}_{w_i} \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_3} &< \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_3} \right) \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_3} &< \mathbf{\theta} \cdot \textbf{x}_{w_2} + \mathbf{\theta} \cdot \textbf{x}_{w_3} \\
+	0 &< \mathbf{\theta} \cdot \textbf{x}_{w_2}
+    \end{align*}
+    By {\bf Claim 1} and {\bf Claim 2}, $0 > \mathbf{\theta} \textbf{x}_{w_2}$ and $0 < \mathbf{\theta} \textbf{x}_{w_2}$, which is a contradiction. Thus, inequalities (2) and (3) cannot both be true when using sentiment analysis model (1).
+\end{quote}

@@ -1,0 +1,30 @@
+\begin{quote}
+    {\bf Answer}: Prove by contradiction that the following inequalities (5) and (6) cannot both hold when using sentiment analysis model (4).
+    \begin{align}
+	\textrm{score(good good)} &> \textrm{score(not good)} \\
+	\textrm{score(good bad)} &< \textrm{score(not bad)}
+    \end{align}
+    Assume that both inequalities (5) and (6) are true using sentiment analysis model (4). Let $\textbf{x}_{w_1}$, $\textbf{x}_{w_2}$, $\textbf{x}_{w_3}$ be arbitrary word embedding vectors for the words ``good'', ``not'', and ``bad'', respectively and let $\mathbf{\theta}$ be an arbitrary weight vector. \\ 
+
+    {\bf Claim 1}: $\mathbf{\theta} \cdot \textbf{x}_{w_1} > \mathbf{\theta} \cdot \textbf{x}_{w_2}$
+    \begin{align*}
+	\textrm{score(good good)} &> \textrm{score(not good)} \\
+	\frac{1}{m} \left( \mathbf{\theta} \cdot \sum_{i=1}^m \textbf{x}_{w_i} \right) &> \frac{1}{m} \left( \mathbf{\theta} \cdot \sum_{i=1}^m \textbf{x}_{w_i} \right) \\
+	\frac{1}{2} \left( \mathbf{\theta} \cdot \left( \textbf{x}_{w_1} + \textbf{x}_{w_1} \right) \right) &> \frac{1}{2} \left( \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_1} \right) \right) \\
+    \mathbf{\theta} \cdot \left( \textbf{x}_{w_1} + \textbf{x}_{w_1} \right) &> \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_1} \right) \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} + \mathbf{\theta} \cdot \textbf{x}_{w_1}  &> \mathbf{\theta} \cdot \textbf{x}_{w_2} + \mathbf{\theta} \cdot \textbf{x}_{w_1} \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} &> \mathbf{\theta} \cdot \textbf{x}_{w_2}
+    \end{align*}
+
+    {\bf Claim 2}: $\mathbf{\theta} \cdot \textbf{x}_{w_1} < \mathbf{\theta} \cdot \textbf{x}_{w_2}$
+    \begin{align*}
+	\textrm{score(good bad)} &< \textrm{score(not bad)} \\
+	\frac{1}{m} \left( \mathbf{\theta} \cdot \sum_{i=1}^m \textbf{x}_{w_i} \right) &< \frac{1}{m} \left( \mathbf{\theta} \cdot \sum_{i=1}^m \textbf{x}_{w_i} \right) \\
+	\frac{1}{2} \left( \mathbf{\theta} \cdot \left( \textbf{x}_{w_1} + \textbf{x}_{w_3} \right) \right) &< \frac{1}{2} \left( \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_3} \right) \right) \\
+    \mathbf{\theta} \cdot \left( \textbf{x}_{w_1} + \textbf{x}_{w_3} \right) &< \mathbf{\theta} \cdot \left( \textbf{x}_{w_2} + \textbf{x}_{w_3} \right) \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} + \mathbf{\theta} \cdot \textbf{x}_{w_3}  &< \mathbf{\theta} \cdot \textbf{x}_{w_2} + \mathbf{\theta} \cdot \textbf{x}_{w_3} \\
+	\mathbf{\theta} \cdot \textbf{x}_{w_1} &< \mathbf{\theta} \cdot \textbf{x}_{w_2}
+    \end{align*}
+
+    By {\bf Claim 1} and {\bf Claim 2}, $\mathbf{\theta} \cdot \textbf{x}_{w_1} > \mathbf{\theta} \cdot \textbf{x}_{w_2}$ and $\mathbf{\theta} \cdot \textbf{x}_{w_1} < \mathbf{\theta} \cdot \textbf{x}_{w_2}$, which is a contradiction. Thus, inequalities (5) and (6) cannot both be true when using sentiment analysis model (4).
+\end{quote}
